@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Calculator() {
-    // setter 개념
+  // setter 개념
   const [input, setInput] = useState("0");
   const [result, setResult] = useState(0);
 
@@ -10,13 +10,22 @@ function Calculator() {
 
     const lastChar = input.charAt(input.length - 1);
     if ((lastChar === "+" || lastChar === "-") && clickedValue === "0") {
-        return; // 추가없이 return - 함수 종료
+      return; // 추가없이 return - 함수 종료
     }
 
-    if((lastChar === "+" || lastChar === "-") && (clickedValue === "+" || clickedValue === "-")) {
-        return;
+    if (
+      (lastChar === "+" || lastChar === "-") &&
+      (clickedValue === "+" || clickedValue === "-")
+    ) {
+      return;
     }
 
+    // 한글자 지우기 / 0번째 인덱스에서 -1 - 가장 뒤를 잘라냄
+    if (clickedValue === "r") {
+      setInput(input.slice(0, -1));
+
+      return;
+    }
 
     if (clickedValue === "=") {
       setResult(eval(input));
@@ -26,28 +35,26 @@ function Calculator() {
 
     // useState"0"으로 했을때
     if (input === "0") {
-        if (clickedValue === "+" || clickedValue === "-") {
-            return;
-        }
-      setInput(clickedValue);
+      if (clickedValue === "+" || clickedValue === "-") {
+        return;
+      } else {
+        setInput(clickedValue);
+      }
     } else {
       setInput(input + clickedValue);
       // 최초로 클릭한걸로 갈아끼워짐
     }
   };
 
-  
-
   return (
     <div>
       <h1>입력 : {input}</h1>
       <h1>결과 : {result}</h1>
       <div>
-    
         <button onClick={onClickHandler} value={0}>
           0
         </button>
-        <button onClick={onClickHandler} value={0}>
+        <button onClick={onClickHandler} value={"r"}>
           ←
         </button>
       </div>
