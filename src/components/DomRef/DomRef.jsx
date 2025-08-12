@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 
 function DomRef() {
-  // 특정 요소에 직접 접근해야할 때 사용
+  // 특정 요소에 직접 접근해야할 때 사용(함수 + 로직)
   const inputRef = useRef();
 
   useEffect(() => {

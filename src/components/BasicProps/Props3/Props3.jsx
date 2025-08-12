@@ -7,8 +7,7 @@
 function Props3({ch1, children}) {
     // const ch1 = <div>자식요소1</div>;
    console.log(ch1);
-    return <div>{children}</div>;
-  
+    return <div>{children}</div>; 
 }
 
 export default Props3
