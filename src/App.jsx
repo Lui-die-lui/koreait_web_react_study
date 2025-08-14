@@ -1,4 +1,4 @@
-import './App.css'
+// import './App.css'
 import BasicJsx from './components/BasicJsx/BasicJsx'
 import BasicProps from './components/BasicProps/BasicProps'
 // 자동으로 하나의 태그로 가져와줌 - export 했기 때문
@@ -19,6 +19,9 @@ import LifeCycleApp from './components/LifeCycle/LifeCycleApp'
 import Render from './components/LifeCycle/Render'
 import FruitsFilter from './components/Practice/FruitsFilter/FruitsFilter'
 import UserProfile from './components/Practice/UserProfile/UserProfile'
+import Layout from './components/TodoList/components/Layout/Layout'
+import Main from './components/TodoList/components/Main/Main'
+import Index from './components/TodoList/components/pages'
 
 function App() {
  
@@ -42,7 +45,8 @@ function App() {
     {/* <FruitsFilter /> */}
     {/* <UserProfile /> */}
     {/* <Emotion1 /> */}
-    <Emotion2 />
+    {/* <Emotion2 /> */}
+    <Index />
     </>
   )
 }
