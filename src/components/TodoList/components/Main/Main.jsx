@@ -16,7 +16,7 @@ function Main({ todoList, setTodoList }) {
       return;
     }
     if (inputValue.trim().length === 0) {
-      return;
+      return;   
     }
     // console.log(inputValue, "등록");
     // 전에 있던 상태를 들고옴
