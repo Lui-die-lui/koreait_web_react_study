@@ -16,7 +16,7 @@ function Main({ todoList, setTodoList }) {
       return;
     }
     if (inputValue.trim().length === 0) {
-      return;   
+      return;
     }
     // console.log(inputValue, "등록");
     // 전에 있던 상태를 들고옴
@@ -36,6 +36,32 @@ function Main({ todoList, setTodoList }) {
     // 초기화
     setInputValue("");
   };
+
+  const checkBoxOnChangeHandler = (e) => {
+    // 넣어놓은 todoid를 Int 값으로 변환 후 todoId 함수에 넣음
+    const todoId = parseInt(e.target.value);
+
+    setTodoList((prev) =>
+      prev.map((todo) => {
+        // todo id가 가져온 todo id와 같은지
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            // 클릭 했을때 true가 될 수 있도록
+            isComplete: !todo.isComplete,
+          };
+        }
+        // 바꾼것만 return
+        return todo;
+      })
+    );
+  };
+
+  const deleteOnClickHandler = (todoId) => {
+    // filter - todo 가져옴 - 아닌것 빼고 (삭제의 의미)
+    setTodoList((prev) => prev.filter((todo) => todo.id !== todoId));
+  };
+
   return (
     <div css={s.container}>
       <div css={s.listContainer}>
@@ -43,12 +69,23 @@ function Main({ todoList, setTodoList }) {
           {todoList.map((todo) => (
             <li key={todo.id}>
               {/* 고유 id 설정 */}
-              <input type="checkbox" id={`todo${todo.id}`} />
+              <input
+                type="checkbox"
+                id={`todo${todo.id}`}
+                value={todo.id}
+                // 체크가 값을 따라감
+                checked={todo.isComplete}
+                onChange={checkBoxOnChangeHandler}
+              />
               <label htmlFor={`todo${todo.id}`}></label>
               {/* 내용을 클릭해도 체크됨 */}
               <label htmlFor={`todo${todo.id}`}>{todo.content}</label>
               <div css={s.hiddenTrashBox}>
-                <div css={s.trashBox}>
+                {/* 매개변수 괄호있음 -> 바로 호출됨/ 화살표 함수(익명 함수) 사용해줘야함 */}
+                <div
+                  css={s.trashBox}
+                  onClick={() => deleteOnClickHandler(todo.id)}
+                >
                   <IoTrash />
                 </div>
               </div>

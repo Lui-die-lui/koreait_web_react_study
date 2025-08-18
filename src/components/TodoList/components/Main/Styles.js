@@ -22,6 +22,7 @@ export const listContainer = css`
     overflow-y: auto;
 
     & > li {
+      position: relative;
       display: flex;
       box-sizing: border-box;
       padding: 10px 15px;
