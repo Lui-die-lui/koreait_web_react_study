@@ -30,7 +30,7 @@ function Router3() {
 
   useEffect(() => {
     // location.state는 navigate 함수를 통해 전달된 숨겨진 데이터를 담고 있다.
-    console.log("location state => ", location.state);
+    console.log("location state -> ", location.state);
   }, [location.state]);
 
   useEffect(() => {
